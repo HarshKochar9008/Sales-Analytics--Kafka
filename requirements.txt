@@ -1,0 +1,23 @@
+# Kafka dependencies
+kafka-python>=2.0.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Database
+psycopg2-binary>=2.9.0
+
+# Fake data generation
+Faker>=20.0.0
+
+# Dashboard
+streamlit>=1.28.0
+plotly>=5.17.0
+
+# Utilities
+python-dotenv>=1.0.0
+
+# Note: Airflow dependencies are handled by Docker Compose
+# For local development, you can install Airflow separately if needed:
+# pip install apache-airflow[postgres]>=2.7.0 
