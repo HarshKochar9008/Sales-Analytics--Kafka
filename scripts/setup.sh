@@ -144,7 +144,7 @@ display_summary() {
     echo "Services running:"
     echo "  • Zookeeper: http://localhost:2181"
     echo "  • Kafka: http://localhost:9092"
-    echo "  • PostgreSQL: localhost:5432"
+    echo "  • PostgreSQL: localhost:5050"
     echo "  • Airflow: http://localhost:8080 (admin/admin)"
     echo ""
     echo "Next steps:"

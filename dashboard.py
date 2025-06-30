@@ -13,6 +13,12 @@ import psycopg2
 from datetime import datetime, timedelta
 import time
 import logging
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -31,11 +37,11 @@ DB_CONFIG = {
     'host': 'localhost',
     'database': 'sales',
     'user': 'postgres',
-    'password': 'yourpassword',
-    'port': '5432'
+    'password': os.getenv('DB_PASSWORD'), 
+    'port': '5050'
 }
 
-@st.cache_data(ttl=60)  # Cache for 60 seconds
+@st.cache_resource  # Cache for database connections
 def get_db_connection():
     """Create database connection"""
     try:
@@ -277,10 +283,6 @@ def main():
         recent_data = df.head(10)[['order_id', 'product', 'quantity', 'total_price', 'region', 'timestamp']]
         recent_data['timestamp'] = pd.to_datetime(recent_data['timestamp']).dt.strftime('%Y-%m-%d %H:%M')
         st.dataframe(recent_data, use_container_width=True)
-    
-    # Auto-refresh every 30 seconds
-    time.sleep(30)
-    st.rerun()
 
 if __name__ == "__main__":
     main() 
